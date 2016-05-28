@@ -96,7 +96,7 @@ var Main = React.createClass({
         } else if (this.state.currentUser.courier_id !== null) {
           // USER IS A COURIER
           mainDiv = <div>
-           <CourierView url={this.props.url} user={this.state.currentUser} jobs={this.state.jobs} fetchJobs = {this.fetchJobs} onSignOut={this.setUser}/>
+           <CourierView currentUser={this.state.currentUser} url={this.props.url} user={this.state.currentUser} jobs={this.state.jobs} fetchJobs = {this.fetchJobs} onSignOut={this.setUser}/>
             </div>
         } else {
           // USER IS NOT COURIER OR COMPANY

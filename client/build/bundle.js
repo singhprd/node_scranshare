@@ -20437,7 +20437,7 @@
 	        mainDiv = React.createElement(
 	          'div',
 	          null,
-	          React.createElement(CourierView, { url: this.props.url, user: this.state.currentUser, jobs: this.state.jobs, fetchJobs: this.fetchJobs, onSignOut: this.setUser })
+	          React.createElement(CourierView, { currentUser: this.state.currentUser, url: this.props.url, user: this.state.currentUser, jobs: this.state.jobs, fetchJobs: this.fetchJobs, onSignOut: this.setUser })
 	        );
 	      } else {
 	        // USER IS NOT COURIER OR COMPANY
@@ -38569,6 +38569,9 @@
 	    this.setState({ currentView: view });
 	  },
 	  handleTakeJob: function handleTakeJob(job) {
+	    // optimistic load
+	    job.courier_id = this.props.currentUser.id;
+	    // api post
 	    var updateUrl = this.props.url + "jobs/" + job.id;
 	    var object = { accepted: true };
 	    var request = new XMLHttpRequest();
@@ -38579,8 +38582,11 @@
 	
 	    this.props.fetchJobs();
 	  },
-	
+	  // release job
 	  handleCancelJob: function handleCancelJob(job) {
+	    // optimistic load
+	    job.courier_id = "";
+	    // Api request
 	    var updateUrl = this.props.url + "jobs/" + job.id;
 	    var object = { accepted: false };
 	    var request = new XMLHttpRequest();

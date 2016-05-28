@@ -13,6 +13,9 @@ var CourierView = React.createClass({
     this.setState({currentView: view});
   },
   handleTakeJob:function(job){
+    // optimistic load
+    job.courier_id = this.props.currentUser.id;
+    // api post
     var updateUrl = this.props.url + "jobs/" + job.id;
     var object = {accepted: true};
     var request = new XMLHttpRequest();
@@ -23,9 +26,12 @@ var CourierView = React.createClass({
 
     this.props.fetchJobs();
   },
-
+  // release job
   handleCancelJob:function(job){
-    var updateUrl = this.props.url + "jobs/" + job.id;  
+    // optimistic load
+    job.courier_id = "";
+    // Api request
+    var updateUrl = this.props.url + "jobs/" + job.id;
     var object = {accepted: false};
     var request = new XMLHttpRequest();
     request.open("PUT", updateUrl, true);
