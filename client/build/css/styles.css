@@ -1,0 +1,234 @@
+@import url(https://fonts.googleapis.com/css?family=Karla);
+
+* {
+  font-family: 'Karla', sans-serif;
+}
+
+#bg { 
+  position: absolute;
+  z-index: -1;
+  opacity: 0.7;
+  background: url(images/foodbanner image.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  margin-bottom: 0;
+  -webkit-filter: grayscale(50%);
+  filter: grayscale(50%);
+}
+
+
+
+#nav {
+  height: 60px;
+  width: 100%;
+  opacity: 1;
+  background-color: #303c50;
+  opacity: 1;
+  /*position:absolute;*/
+  left:0;
+  top:0;
+}
+
+.content {
+  margin: 0 auto;
+  padding: 0 2em;
+  max-width: 800px;
+  margin-bottom: 50px;
+  line-height: 1.6em;
+  margin-top: 65px;
+  /*border: 1px solid;*/
+}
+
+
+.address-header{
+  margin-bottom: 0;
+}
+
+.address-details{
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/*googlemap div:*/
+#map_canvas{
+  min-width: 200px;
+  min-height: 500px;
+
+ /* position:absolute;
+  left:0;
+  right:0;*/
+  /* replaced with pure styling:*/
+ /* max-width: 100%;
+ max-height: 100%;*/
+}
+
+@media screen and (max-width: 680px) {
+  #map_canvas {
+    position: relative;
+    width: 100vw;
+    height: 500px;
+    left: calc(-50vw + 50%);
+  }
+}
+
+#my-info-window{
+  min-height: 200px;
+  min-width: 200px;
+  max-width: 300px;
+  position: absolute;
+  top: 60px;
+  right: 0;
+  background-color: rgba(224,247,250,0.8);
+
+}
+
+.job{
+  margin-bottom: 10px;
+  border: 2px solid grey;
+  border-radius: 5px;
+  padding-left: 2%;
+}
+
+.job-taken{
+  background-color: rgba(255,236,179,0.7);
+}
+
+.job-available{
+  background-color: rgba(205,240,174,0.7);
+}
+
+/*/* not sure if this is required or not, mention of wrapping googlemap like this, this breaks the signout:*/
+
+/*.map{
+  position: absolute;
+  width: 300px;
+  height: 100%;
+  }*/
+
+
+  /*Navbar*/
+  .topnav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    z-index: 1;
+  }
+
+  /* Remove margins and padding from the list, and add a black background color */
+  ul.topnav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
+
+  /* Float the list items side by side */
+  ul.topnav li {float: left;}
+
+  /* Style the links inside the list items */
+  ul.topnav li a {
+    display: inline-block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 17px;
+  }
+  
+  #navbar-scranshare {
+    display: inline-block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 17px;
+    font-weight: bold;
+    /*color: rgb(0, 120, 231);*/
+    /*background-color: #fff;*/
+  }
+
+  /* Change background color of links on hover */
+  ul.topnav li a:hover {background-color: #111;}
+
+  /* Hide the list item that contains the link that should open and close the topnav on small screens */
+  ul.topnav li.icon {display: none;}
+
+  /*make navbar responsive*/
+
+  /* When the screen is less than 680 pixels wide, hide all list items, except for the first one ("Home"). Show the list item that contains the link to open and close the topnav (li.icon) */
+  @media screen and (max-width:680px) {
+    ul.topnav li:not(:first-child) {display: none;}
+    ul.topnav li.icon {
+      float: right;
+      display: inline-block;
+    }
+  }
+
+  /* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens */
+  @media screen and (max-width:680px) {
+    ul.topnav.responsive {
+      position: relative;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      z-index: 1;
+    }
+    ul.topnav.responsive li.icon {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    ul.topnav.responsive li {
+      float: none;
+      display: inline;
+    }
+    ul.topnav.responsive li a {
+      display: block;
+      text-align: left;
+    }
+  }
+
+  /*Custom buttons*/
+  .button-success,
+  .button-error,
+  .button-warning,
+  .button-secondary {
+    color: white;
+    border-radius: 4px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  }
+
+  .button-success {
+    background: rgb(28, 184, 65); /* this is a green */
+  }
+
+  .button-error {
+    background: rgb(202, 60, 60); /* this is a maroon */
+  }
+
+  .button-warning {
+    background: rgb(223, 117, 20); /* this is an orange */
+  }
+
+  .button-secondary {
+    background: rgb(66, 184, 221); /* this is a light blue */
+  }
+
+  /*add margin to pure buttons*/
+  .pure-button {
+    margin: 2px;
+  }
+  .button-small {
+    font-size: 85;
+    border-radius: 4px;
+    background: rgb(66, 184, 221);
+    padding: 3px;
+    color: white;
+  }
