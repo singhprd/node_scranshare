@@ -37700,7 +37700,7 @@
 	  displayName: 'CompanyView',
 	
 	  getInitialState: function getInitialState() {
-	    return { currentView: "donations", selectedJobForEdit: {} };
+	    return { currentView: "foodForm", selectedJobForEdit: {} };
 	  },
 	  changeView: function changeView(view) {
 	    this.setState({ currentView: view });

@@ -10,7 +10,7 @@ var FormSuccessPage = require('../FormSuccessPage.jsx')
 // var DatePicker = require('../DatePicker.jsx')
 var CompanyView = React.createClass({
   getInitialState: function() {
-    return {currentView: "donations", selectedJobForEdit: {}}
+    return {currentView: "foodForm", selectedJobForEdit: {}}
   },
   changeView: function(view) {
     this.setState({currentView: view});
