@@ -24,7 +24,7 @@ captureJobCompany: function(jobs){
   } else {
     for( var i = 1; i < jobs.length; i++){
      if (company.name == jobs[i].company.name){
-        console.log(company)
+        // console.log(company)
         return company
       }
        else {

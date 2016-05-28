@@ -20380,7 +20380,8 @@
 	        if (!_.isEqual(jobs, this.state.jobs)) {
 	          this.setState({ jobs: jobs });
 	        }
-	        setTimeout(this.fetchJobs, 1000);
+	        setTimeout(this.fetchJobs, 2000);
+	        console.log("fetched jobs");
 	      }
 	    }.bind(this);
 	    request.send(null);
@@ -20437,7 +20438,7 @@
 	        mainDiv = React.createElement(
 	          'div',
 	          null,
-	          React.createElement(CourierView, { currentUser: this.state.currentUser, url: this.props.url, user: this.state.currentUser, jobs: this.state.jobs, fetchJobs: this.fetchJobs, onSignOut: this.setUser })
+	          React.createElement(CourierView, { forceUpdateState: this.forceUpdateState, currentUser: this.state.currentUser, url: this.props.url, user: this.state.currentUser, jobs: this.state.jobs, fetchJobs: this.fetchJobs, onSignOut: this.setUser })
 	        );
 	      } else {
 	        // USER IS NOT COURIER OR COMPANY
@@ -37589,14 +37590,14 @@
 	    return { first_name: '', last_name: '', phone: '' };
 	  },
 	  handleSubmit: function handleSubmit(e) {
-	    // e.preventDefault();
+	    e.preventDefault();
 	    var request = new XMLHttpRequest();
 	    request.open("POST", this.props.url + '/couriers');
 	    request.setRequestHeader("Content-Type", "application/json");
 	    request.withCredentials = true;
 	    request.onload = function () {
 	      if (request.status === 200) {
-	        console.log(request.responseText);
+	        // console.log(request.responseText);
 	        window.location.reload();
 	      } else {
 	        console.log("error posting courier data", request.status);
@@ -38588,7 +38589,19 @@
 	  },
 	  handleTakeJob: function handleTakeJob(job) {
 	    // optimistic load
-	    job.courier_id = this.props.currentUser.id;
+	    var jobs = this.props.jobs.map(function (each) {
+	      if (each === job) {
+	        each.courier_id = this.props.currentUser.id;
+	        // console.log(each)
+	        return each;
+	      } else {
+	        return each;
+	      }
+	    }.bind(this));
+	    this.props.forceUpdateState({ jobs: jobs });
+	
+	    // job.courier_id = this.props.currentUser.id;
+	    // this.props.forceUpdateState({jobs: job});
 	    // api post
 	    var updateUrl = this.props.url + "jobs/" + job.id;
 	    var object = { accepted: true };
@@ -38598,12 +38611,24 @@
 	    request.withCredentials = true;
 	    request.send(JSON.stringify(object));
 	
-	    this.props.fetchJobs();
+	    // this.props.fetchJobs();
 	  },
 	  // release job
 	  handleCancelJob: function handleCancelJob(job) {
 	    // optimistic load
-	    job.courier_id = "";
+	    // console.log(this.props.jobs);
+	    var jobs = this.props.jobs.map(function (each) {
+	      if (each.id === job.id) {
+	        each.courier_id = null;
+	        // console.log(each)
+	        return each;
+	      } else {
+	        return each;
+	      }
+	    }.bind(this));
+	    // console.log(jobs);
+	    this.props.forceUpdateState({ jobs: jobs });
+	
 	    // Api request
 	    var updateUrl = this.props.url + "jobs/" + job.id;
 	    var object = { accepted: false };
@@ -38613,7 +38638,7 @@
 	    request.withCredentials = true;
 	    request.send(JSON.stringify(object));
 	
-	    this.props.fetchJobs();
+	    // this.props.fetchJobs();
 	  },
 	
 	  handleCompleteJob: function handleCompleteJob(job) {
@@ -38948,7 +38973,7 @@
 	    } else {
 	      for (var i = 1; i < jobs.length; i++) {
 	        if (company.name == jobs[i].company.name) {
-	          console.log(company);
+	          // console.log(company)
 	          return company;
 	        } else {
 	          return false;

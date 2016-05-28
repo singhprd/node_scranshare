@@ -47,7 +47,8 @@ var Main = React.createClass({
         if ( !_.isEqual(jobs, this.state.jobs) ) {
           this.setState({jobs: jobs});
         }
-        setTimeout(this.fetchJobs, 1000);
+        setTimeout(this.fetchJobs, 2000);
+        console.log("fetched jobs");
       }
     }.bind(this)
     request.send(null);
@@ -96,7 +97,7 @@ var Main = React.createClass({
         } else if (this.state.currentUser.courier_id !== null) {
           // USER IS A COURIER
           mainDiv = <div>
-           <CourierView currentUser={this.state.currentUser} url={this.props.url} user={this.state.currentUser} jobs={this.state.jobs} fetchJobs = {this.fetchJobs} onSignOut={this.setUser}/>
+           <CourierView forceUpdateState={this.forceUpdateState} currentUser={this.state.currentUser} url={this.props.url} user={this.state.currentUser} jobs={this.state.jobs} fetchJobs = {this.fetchJobs} onSignOut={this.setUser}/>
             </div>
         } else {
           // USER IS NOT COURIER OR COMPANY

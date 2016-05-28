@@ -6,7 +6,7 @@ var ShowAllJobs = require('../ShowAllJobs.jsx')
 var JobList = require('../JobList.jsx')
 
 var CourierView = React.createClass({
-   getInitialState: function() {
+  getInitialState: function() {
     return {currentView: "mapview"}
   },
   changeView: function(view) {
@@ -14,7 +14,19 @@ var CourierView = React.createClass({
   },
   handleTakeJob:function(job){
     // optimistic load
-    job.courier_id = this.props.currentUser.id;
+    var jobs = this.props.jobs.map(function(each){
+      if (each === job) {
+        each.courier_id = this.props.currentUser.id;
+        // console.log(each)
+        return each;
+      } else {
+       return each; 
+      }
+    }.bind(this));
+    this.props.forceUpdateState({jobs: jobs})
+
+    // job.courier_id = this.props.currentUser.id;
+    // this.props.forceUpdateState({jobs: job});
     // api post
     var updateUrl = this.props.url + "jobs/" + job.id;
     var object = {accepted: true};
@@ -24,12 +36,24 @@ var CourierView = React.createClass({
     request.withCredentials = true;
     request.send(JSON.stringify(object));
 
-    this.props.fetchJobs();
+    // this.props.fetchJobs();
   },
   // release job
   handleCancelJob:function(job){
     // optimistic load
-    job.courier_id = "";
+    // console.log(this.props.jobs);
+    var jobs = this.props.jobs.map(function(each){
+      if (each.id === job.id) {
+        each.courier_id = null;
+        // console.log(each)
+        return each;
+      } else {
+       return each; 
+      }
+    }.bind(this));
+    // console.log(jobs);
+    this.props.forceUpdateState({jobs: jobs});
+
     // Api request
     var updateUrl = this.props.url + "jobs/" + job.id;
     var object = {accepted: false};
@@ -39,7 +63,7 @@ var CourierView = React.createClass({
     request.withCredentials = true;
     request.send(JSON.stringify(object))
 
-    this.props.fetchJobs();
+    // this.props.fetchJobs();
   },
 
   handleCompleteJob:  function(job){

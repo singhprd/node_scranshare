@@ -7,14 +7,14 @@ var CourierForm = React.createClass({
     return {first_name: '', last_name: '', phone: ''};
   },
   handleSubmit: function(e){
-    // e.preventDefault();
+    e.preventDefault();
     var request = new XMLHttpRequest();
     request.open("POST", this.props.url+'/couriers');
     request.setRequestHeader("Content-Type", "application/json");
     request.withCredentials = true;
     request.onload = function(){
       if(request.status === 200){
-        console.log(request.responseText);
+        // console.log(request.responseText);
         window.location.reload();
       }else {
         console.log("error posting courier data", request.status)
