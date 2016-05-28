@@ -2,7 +2,7 @@ config = {
   entry: "./client/src/index.js",
   output: {
     filename: "bundle.js",
-    path: "../client/build"
+    path: "./client/build"
   },
   devtool: 'source-map', 
   resolve: {
