@@ -134,7 +134,6 @@ render:function(){
   <button className="pure-button button-secondary" onClick = {this.revealJobs}>See Jobs</button>
   <button className="pure-button button-secondary" onClick = {this.hideJobs}>Hide Jobs</button>
   <button className="pure-button button-secondary" onClick = {this.findMe}>Find Me</button>
-  <a className="pure-button button-secondary" href="javascript:location.reload(true)">Refresh Page</a>
   </div>
   )
 }

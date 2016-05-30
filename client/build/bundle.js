@@ -20333,19 +20333,19 @@
 	
 	var React = __webpack_require__(1);
 	var SignIn = __webpack_require__(171);
-	var SignUp = __webpack_require__(176);
-	var SignOut = __webpack_require__(177);
-	var ScranShareSignUp = __webpack_require__(178);
-	var ScranShareSignUp = __webpack_require__(178);
-	var CompanyView = __webpack_require__(182);
-	var CourierView = __webpack_require__(190);
-	var Navbar = __webpack_require__(194);
+	var SignUp = __webpack_require__(177);
+	var SignOut = __webpack_require__(178);
+	var ScranShareSignUp = __webpack_require__(179);
+	var ScranShareSignUp = __webpack_require__(179);
+	var CompanyView = __webpack_require__(183);
+	var CourierView = __webpack_require__(191);
+	var Navbar = __webpack_require__(195);
 	//sample job to pass through to joblist if required:
 	// var sampleJSON = require('../sample.json');
 	
 	//child components:
-	var JobList = __webpack_require__(186);
-	var GoogleMap = __webpack_require__(192);
+	var JobList = __webpack_require__(187);
+	var GoogleMap = __webpack_require__(193);
 	
 	//beginning attempts at newing up a google map:
 	
@@ -36896,7 +36896,7 @@
 	
 	var React = __webpack_require__(1);
 	var LinkedStateMixin = __webpack_require__(172);
-	var classNames = __webpack_require__(195);
+	var classNames = __webpack_require__(176);
 	
 	var SignIn = React.createClass({
 	  displayName: 'SignIn',
@@ -37187,11 +37187,65 @@
 /* 176 */
 /***/ function(module, exports, __webpack_require__) {
 
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+	  Copyright (c) 2016 Jed Watson.
+	  Licensed under the MIT License (MIT), see
+	  http://jedwatson.github.io/classnames
+	*/
+	/* global define */
+	
+	(function () {
+		'use strict';
+	
+		var hasOwn = {}.hasOwnProperty;
+	
+		function classNames () {
+			var classes = [];
+	
+			for (var i = 0; i < arguments.length; i++) {
+				var arg = arguments[i];
+				if (!arg) continue;
+	
+				var argType = typeof arg;
+	
+				if (argType === 'string' || argType === 'number') {
+					classes.push(arg);
+				} else if (Array.isArray(arg)) {
+					classes.push(classNames.apply(null, arg));
+				} else if (argType === 'object') {
+					for (var key in arg) {
+						if (hasOwn.call(arg, key) && arg[key]) {
+							classes.push(key);
+						}
+					}
+				}
+			}
+	
+			return classes.join(' ');
+		}
+	
+		if (typeof module !== 'undefined' && module.exports) {
+			module.exports = classNames;
+		} else if (true) {
+			// register as 'classnames', consistent with npm package name
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
+				return classNames;
+			}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+		} else {
+			window.classNames = classNames;
+		}
+	}());
+
+
+/***/ },
+/* 177 */
+/***/ function(module, exports, __webpack_require__) {
+
 	'use strict';
 	
 	var React = __webpack_require__(1);
 	var LinkedStateMixin = __webpack_require__(172);
-	var classNames = __webpack_require__(195);
+	var classNames = __webpack_require__(176);
 	
 	var SignUp = React.createClass({
 	  displayName: 'SignUp',
@@ -37250,7 +37304,7 @@
 	module.exports = SignUp;
 
 /***/ },
-/* 177 */
+/* 178 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -37290,15 +37344,15 @@
 	module.exports = SignOut;
 
 /***/ },
-/* 178 */
+/* 179 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var React = __webpack_require__(1);
-	var ButtonFilter = __webpack_require__(179);
-	var CompanyForm = __webpack_require__(180);
-	var CourierForm = __webpack_require__(181);
+	var ButtonFilter = __webpack_require__(180);
+	var CompanyForm = __webpack_require__(181);
+	var CourierForm = __webpack_require__(182);
 	
 	var ScranShareSignUp = React.createClass({
 	  displayName: 'ScranShareSignUp',
@@ -37337,7 +37391,7 @@
 	module.exports = ScranShareSignUp;
 
 /***/ },
-/* 179 */
+/* 180 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -37388,7 +37442,7 @@
 	module.exports = ButtonFilter;
 
 /***/ },
-/* 180 */
+/* 181 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37574,7 +37628,7 @@
 	// }.bind(this))
 
 /***/ },
-/* 181 */
+/* 182 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37681,20 +37735,20 @@
 	module.exports = CourierForm;
 
 /***/ },
-/* 182 */
+/* 183 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var _ = __webpack_require__(169);
 	var React = __webpack_require__(1);
-	var SignOut = __webpack_require__(177);
-	var JobForm = __webpack_require__(183);
-	var CompanyNavbar = __webpack_require__(184);
-	var ShowAllJobs = __webpack_require__(185);
-	var JobList = __webpack_require__(186);
-	var EditJobForm = __webpack_require__(188);
-	var FormSuccessPage = __webpack_require__(189);
+	var SignOut = __webpack_require__(178);
+	var JobForm = __webpack_require__(184);
+	var CompanyNavbar = __webpack_require__(185);
+	var ShowAllJobs = __webpack_require__(186);
+	var JobList = __webpack_require__(187);
+	var EditJobForm = __webpack_require__(189);
+	var FormSuccessPage = __webpack_require__(190);
 	// var DatePicker = require('../DatePicker.jsx')
 	var CompanyView = React.createClass({
 	  displayName: 'CompanyView',
@@ -37769,7 +37823,7 @@
 	module.exports = CompanyView;
 
 /***/ },
-/* 183 */
+/* 184 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37973,7 +38027,7 @@
 	module.exports = SupplyItemForm;
 
 /***/ },
-/* 184 */
+/* 185 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -38061,13 +38115,13 @@
 	module.exports = CompanyNavbar;
 
 /***/ },
-/* 185 */
+/* 186 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var React = __webpack_require__(1);
-	var CompanyView = __webpack_require__(182);
+	var CompanyView = __webpack_require__(183);
 	
 	var ShowAllJobs = React.createClass({
 	  displayName: 'ShowAllJobs',
@@ -38149,14 +38203,14 @@
 	module.exports = ShowAllJobs;
 
 /***/ },
-/* 186 */
+/* 187 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var React = __webpack_require__(1);
 	
-	var Address = __webpack_require__(187);
+	var Address = __webpack_require__(188);
 	
 	var JobList = React.createClass({
 	  displayName: 'JobList',
@@ -38308,7 +38362,7 @@
 	module.exports = JobList;
 
 /***/ },
-/* 187 */
+/* 188 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -38372,7 +38426,7 @@
 	module.exports = Address;
 
 /***/ },
-/* 188 */
+/* 189 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38529,7 +38583,7 @@
 	module.exports = EditJobForm;
 
 /***/ },
-/* 189 */
+/* 190 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -38566,17 +38620,17 @@
 	module.exports = FormSuccessPage;
 
 /***/ },
-/* 190 */
+/* 191 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var React = __webpack_require__(1);
-	var SignOut = __webpack_require__(177);
-	var CourierNavbar = __webpack_require__(191);
-	var GoogleMap = __webpack_require__(192);
-	var ShowAllJobs = __webpack_require__(185);
-	var JobList = __webpack_require__(186);
+	var SignOut = __webpack_require__(178);
+	var CourierNavbar = __webpack_require__(192);
+	var GoogleMap = __webpack_require__(193);
+	var ShowAllJobs = __webpack_require__(186);
+	var JobList = __webpack_require__(187);
 	
 	var CourierView = React.createClass({
 	  displayName: 'CourierView',
@@ -38685,7 +38739,7 @@
 	module.exports = CourierView;
 
 /***/ },
-/* 191 */
+/* 192 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -38773,14 +38827,14 @@
 	module.exports = CourierNavbar;
 
 /***/ },
-/* 192 */
+/* 193 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var React = __webpack_require__(1);
-	var JobList = __webpack_require__(186);
-	var InfoButton = __webpack_require__(193);
+	var JobList = __webpack_require__(187);
+	var InfoButton = __webpack_require__(194);
 	
 	var GoogleMap = React.createClass({
 	  displayName: 'GoogleMap',
@@ -38928,11 +38982,6 @@
 	        'button',
 	        { className: 'pure-button button-secondary', onClick: this.findMe },
 	        'Find Me'
-	      ),
-	      React.createElement(
-	        'a',
-	        { className: 'pure-button button-secondary', href: 'javascript:location.reload(true)' },
-	        'Refresh Page'
 	      )
 	    );
 	  }
@@ -38941,14 +38990,14 @@
 	module.exports = GoogleMap;
 
 /***/ },
-/* 193 */
+/* 194 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var React = __webpack_require__(1);
-	var JobList = __webpack_require__(186);
-	var Address = __webpack_require__(187);
+	var JobList = __webpack_require__(187);
+	var Address = __webpack_require__(188);
 	
 	var InfoButton = React.createClass({
 	  displayName: 'InfoButton',
@@ -39029,7 +39078,7 @@
 	module.exports = InfoButton;
 
 /***/ },
-/* 194 */
+/* 195 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -39075,60 +39124,6 @@
 	});
 	
 	module.exports = Navbar;
-
-/***/ },
-/* 195 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
-	  Copyright (c) 2016 Jed Watson.
-	  Licensed under the MIT License (MIT), see
-	  http://jedwatson.github.io/classnames
-	*/
-	/* global define */
-	
-	(function () {
-		'use strict';
-	
-		var hasOwn = {}.hasOwnProperty;
-	
-		function classNames () {
-			var classes = [];
-	
-			for (var i = 0; i < arguments.length; i++) {
-				var arg = arguments[i];
-				if (!arg) continue;
-	
-				var argType = typeof arg;
-	
-				if (argType === 'string' || argType === 'number') {
-					classes.push(arg);
-				} else if (Array.isArray(arg)) {
-					classes.push(classNames.apply(null, arg));
-				} else if (argType === 'object') {
-					for (var key in arg) {
-						if (hasOwn.call(arg, key) && arg[key]) {
-							classes.push(key);
-						}
-					}
-				}
-			}
-	
-			return classes.join(' ');
-		}
-	
-		if (typeof module !== 'undefined' && module.exports) {
-			module.exports = classNames;
-		} else if (true) {
-			// register as 'classnames', consistent with npm package name
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
-				return classNames;
-			}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-		} else {
-			window.classNames = classNames;
-		}
-	}());
-
 
 /***/ }
 /******/ ]);
