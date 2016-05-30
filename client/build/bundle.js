@@ -54,6 +54,9 @@
 	window.onload = function () {
 	  ReactDOM.render(React.createElement(Main, { url: url }), document.getElementById('app'));
 	};
+	
+	// forceUpdateState => BAD?
+	// Router?
 
 /***/ },
 /* 1 */
@@ -39051,9 +39054,6 @@
 	  // {this.displayJobDetails(this.props.job)}
 	
 	  render: function render() {
-	    // var clickInfoWindow = function(){
-	    //     console.log(4+2);
-	    // };
 	
 	    var selectedJobs = this.selectJobs();
 	    if (selectedJobs.length === 0) {

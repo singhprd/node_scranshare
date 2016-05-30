@@ -2,8 +2,6 @@ var React = require('react');
 var JobList = require('./JobList');
 var InfoButton = require('./InfoButton');
 
-
-
 var GoogleMap = React.createClass({
   map: null,
 // infowindow: null,
@@ -13,7 +11,7 @@ getInitialState: function(){
     showInfoButton: false,
     jobMarker: [],
     markers: []
-  }
+  };
 },
 createMap:function(){
   var canvas = this.refs["map_canvas"];
@@ -45,9 +43,9 @@ var myInfoWindow = new google.maps.InfoWindow({
   content: "I am here" 
 });
 myInfoWindow.open(this.map, marker);
-})
+});
 this.map.setCenter(marker.getPosition());
-}.bind(this))        
+}.bind(this));
 },
 //add googlemap marker:
 addMarker:function(latLng, image){
@@ -80,7 +78,7 @@ addInfoWindow: function( latLng, image){
       if(job.company.position.lat == latLng.lat){
         jobIndices.push(index);
       }
-    }.bind(this))
+    }.bind(this));
     this.setState({ showInfoButton: true, showJobList: false, jobMarker: latLng});
   }.bind(this));
 },
@@ -135,8 +133,8 @@ render:function(){
   <button className="pure-button button-secondary" onClick = {this.hideJobs}>Hide Jobs</button>
   <button className="pure-button button-secondary" onClick = {this.findMe}>Find Me</button>
   </div>
-  )
+  );
 }
-})
+});
 
 module.exports = GoogleMap;

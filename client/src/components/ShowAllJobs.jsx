@@ -4,7 +4,7 @@ var CompanyView = require('./user_views/CompanyView');
 var ShowAllJobs = React.createClass({
 
   getInitialState: function(){
-    return{job: null}
+    return{job: null};
   },
 
   findJob: function(jobs, index){
@@ -17,8 +17,8 @@ var ShowAllJobs = React.createClass({
     return this.props.onDeleteJob(job);
   },
   handleEditClick: function(e) {
-    this.props.changeView("editJobView")
-    var job = this.findJob(this.props.jobs, e.target.value)
+    this.props.changeView("editJobView");
+    var job = this.findJob(this.props.jobs, e.target.value);
     this.props.onChooseJobForEdit(job);
   },
 
@@ -37,11 +37,9 @@ var ShowAllJobs = React.createClass({
         </li>
         <button className="pure-button button-small" onClick={this.handleEditClick} value={index}>UPDATE</button>
         <button className="pure-button button-small" onClick={this.handleDeleteClick} value={index}>DELETE</button>
-
     </div>  
-    )
-  }.bind(this))
-
+    );
+  }.bind(this));
 
     return(
       <div>
@@ -49,10 +47,9 @@ var ShowAllJobs = React.createClass({
           {jobs}
          </ul> 
       </div>
-    )
+    );
   }
 
 });
-// {this.updateButton(job, index)}
-// {this.deleteButton(job, index)}
+
 module.exports = ShowAllJobs;

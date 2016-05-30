@@ -12,7 +12,7 @@ var Navbar = React.createClass({
         this.props.onSignOut(null);
       }else if(request.status === 401){
       }
-    }.bind(this)
+    }.bind(this);
     request.send(null);
   },
   toggleClassNames: function(e) {
@@ -27,7 +27,7 @@ var Navbar = React.createClass({
         <li id="navbar-scranshare">ScranShare</li>
       </ul>
       </div>
-      )
+      );
   }
 });
 

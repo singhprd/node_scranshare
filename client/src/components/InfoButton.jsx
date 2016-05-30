@@ -8,27 +8,26 @@ handleCloseClick:function(){
   return this.props.onCloseClick();
 },
 
-
 displayJobDetails: function(jobs){  
   if(jobs.length > 1){
-    this.displayMultipleJobs(jobs)
+    this.displayMultipleJobs(jobs);
   } else {
-    this.displayOneJob(jobs)
+    this.displayOneJob(jobs);
   }
 },
 
 captureJobCompany: function(jobs){
-  var company = jobs[0].company
+  var company = jobs[0].company;
   if(jobs.length == 1){
-    return company
+    return company;
   } else {
     for( var i = 1; i < jobs.length; i++){
      if (company.name == jobs[i].company.name){
         // console.log(company)
-        return company
+        return company;
       }
        else {
-        return false
+        return false;
       }
     }
   }
@@ -42,7 +41,7 @@ selectJobs: function(){
       filteredJobs.push(job);
     }
     // return jobIndices;
-  }.bind(this))
+  }.bind(this));
 
   // var jobs = [];
   // for (var index of this.props.jobIndices) {
@@ -54,27 +53,20 @@ selectJobs: function(){
   // {this.displayJobDetails(this.props.job)}
 
 render:function(){
-  // var clickInfoWindow = function(){
-  //     console.log(4+2);
-  // };
 
   var selectedJobs = this.selectJobs();
   if (selectedJobs.length === 0) {
     return null;
   }
-
   return (
           <div id = "my-info-window">
           <button onClick = {this.handleCloseClick}>Close Window</button>
           <Address company={this.captureJobCompany(selectedJobs)}/>
-          <JobList onTakeJob={this.props.onTakeJob} onCancelJob={this.props.onCancelJob} onCompleteJob={this.props.onCompleteJob} company= {this.captureJobCompany(selectedJobs)} jobs = {selectedJobs}/>
-        
-          
+          <JobList onTakeJob={this.props.onTakeJob} onCancelJob={this.props.onCancelJob} onCompleteJob={this.props.onCompleteJob} company= {this.captureJobCompany(selectedJobs)} jobs = {selectedJobs}/>        
           </div>  
-  )
+  );
 }
 
-})
-
+});
 
 module.exports = InfoButton;

@@ -11,9 +11,9 @@ var FormSuccessPage = React.createClass({
         <p>Awesome, thats submitted!</p>
         <button onClick={this.handleClick} className="pure-button button-success"> <i className="fa fa-arrow-left" aria-hidden="true"></i> Go Back</button>
       </div>
-      )
+      );
   }   
-})    
+});
 
 module.exports = FormSuccessPage;
 

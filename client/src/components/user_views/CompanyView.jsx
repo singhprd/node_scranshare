@@ -71,6 +71,6 @@ var CompanyView = React.createClass({
       </div>
       )
   }
-})
+});
 
 module.exports = CompanyView;
