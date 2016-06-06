@@ -54,7 +54,7 @@
 /*googlemap div:*/
 #map_canvas{
   min-width: 200px;
-  min-height: 500px;
+  min-height: 80vh;
 
  /* position:absolute;
   left:0;
@@ -68,7 +68,7 @@
   #map_canvas {
     position: relative;
     width: 100vw;
-    height: 500px;
+    height: 90vh;
     left: calc(-50vw + 50%);
   }
 }
@@ -234,17 +234,17 @@
   }
 
   /* The animation code */
-@keyframes buttonErrorAnimation {
-      /*0%   {background-color: red; left:0px; top:0px;}*/
+  @keyframes buttonErrorAnimation {
+    /*0%   {background-color: red; left:0px; top:0px;}*/
     1%  {background: rgb(223, 117, 20)}
     /*100%  {background: rgb(223, 117, 20)}*/
     /*50%  {background-color: blue; left:200px; top:200px;}*/
     /*75%  {background-color: green; left:0px; top:200px;}*/
     /*100% {background-color: red; left:0px; top:0px;}*/
-}
+  }
 
-/* The element to apply the animation to */
-.buttonError {
+  /* The element to apply the animation to */
+  .buttonError {
     animation-name: buttonErrorAnimation;
     animation-duration: 2s;
-}
+  }

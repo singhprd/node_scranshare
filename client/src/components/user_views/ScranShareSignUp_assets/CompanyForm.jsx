@@ -8,8 +8,6 @@ var CompanyForm = React.createClass({
   },
   handleSubmit: function(e){
     e.preventDefault(e);
-
-        // url (required), options (optional)
         fetch('https://api.postcodes.io/postcodes/'+this.state.postcode, {
           method: 'get'
         }).then(function(response) {
@@ -44,8 +42,8 @@ var CompanyForm = React.createClass({
             this.setState({errors:"Postcode not valid"})
           }
         }.bind(this)).catch(function(err) {
-      // Error :(
-    });
+          console.log(err);
+        });
       },
       render: function() {
         return (
