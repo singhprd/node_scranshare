@@ -12,7 +12,7 @@ var CompanyNavbar = React.createClass({
         this.props.onSignOut(null);
       }else if(request.status === 401){
       }
-    }.bind(this)
+    }.bind(this);
     request.send(null);
   },
   toggleClassNames: function() {
@@ -38,7 +38,7 @@ var CompanyNavbar = React.createClass({
       </li>
       </ul>
       </div>
-      )
+      );
   }
 });
 

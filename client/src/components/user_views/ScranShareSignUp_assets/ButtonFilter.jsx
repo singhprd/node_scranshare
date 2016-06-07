@@ -11,7 +11,7 @@ var ButtonFilter = React.createClass({
         <button value="courier" onClick={this.props.selectType} type="submit" className="pure-button pure-button-primary"> <i className="fa fa-bicycle" aria-hidden="true"> </i> Courier ? </button>
       </p>
       </div>
-      )
+      );
   } 
 });
 

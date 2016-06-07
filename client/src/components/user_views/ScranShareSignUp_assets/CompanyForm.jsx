@@ -27,7 +27,7 @@ var CompanyForm = React.createClass({
           }
           console.log(toPost)
           var request = new XMLHttpRequest();
-          request.open("POST", this.props.url+'/companies');
+          request.open("POST", this.props.url+'companies');
           request.setRequestHeader("Content-Type", "application/json");
           request.withCredentials = true;          
           request.onload = function(){

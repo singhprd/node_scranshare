@@ -2,15 +2,15 @@ var _ = require('lodash');
 var React = require('react');
 var SignOut = require('../authentication/SignOut.jsx');
 var JobForm = require('./JobForm.jsx');
-var CompanyNavbar = require('../CompanyNavbar.jsx')
-var ShowAllJobs = require('../ShowAllJobs.jsx')
-var JobList = require('../JobList.jsx')
-var EditJobForm = require('./EditJobForm.jsx')
-var FormSuccessPage = require('../FormSuccessPage.jsx')
+var CompanyNavbar = require('../CompanyNavbar.jsx');
+var ShowAllJobs = require('../ShowAllJobs.jsx');
+var JobList = require('../JobList.jsx');
+var EditJobForm = require('./EditJobForm.jsx');
+var FormSuccessPage = require('../FormSuccessPage.jsx');
 // var DatePicker = require('../DatePicker.jsx')
 var CompanyView = React.createClass({
   getInitialState: function() {
-    return {currentView: "foodForm", selectedJobForEdit: {}}
+    return {currentView: "foodForm", selectedJobForEdit: {}};
   },
   changeView: function(view) {
     this.setState({currentView: view});
@@ -21,15 +21,15 @@ var CompanyView = React.createClass({
     this.props.forceUpdateState({jobs: updatedJobs});
 
     var updateUrl = this.props.url + "jobs/" + job.id;
-    var object= ""
+    var object= "";
     var request = new XMLHttpRequest();
     request.open("DELETE", updateUrl, true );
     request.setRequestHeader("Content-Type", "application/json");
     request.withCredentials = true;
-    request.send(JSON.stringify(object))
+    request.send(JSON.stringify(object));
   },
   handleChooseJobForEdit: function(job){
-    this.setState({selectedJobForEdit: job})
+    this.setState({selectedJobForEdit: job});
   },
   handleUpdateJob:function(job){
     var updateUrl = this.props.url + "jobs/" + job.id;
@@ -42,7 +42,7 @@ var CompanyView = React.createClass({
         this.setState({currentView: "updateSuccess"});
       }
     }.bind(this);
-    request.send(JSON.stringify(job))
+    request.send(JSON.stringify(job));
   },
   render: function() {
     var toDisplay;

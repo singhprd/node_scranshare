@@ -67,7 +67,7 @@
 /* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_RESULT__;var require;/* WEBPACK VAR INJECTION */(function(process, global, module) {/*!
+	var require;var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(process, global, module) {/*!
 	 * @overview es6-promise - a tiny implementation of Promises/A+.
 	 * @copyright Copyright (c) 2014 Yehuda Katz, Tom Dale, Stefan Penner and contributors (Conversion to ES6 API by Jake Archibald)
 	 * @license   Licensed under MIT license
@@ -38465,7 +38465,7 @@
 	        };
 	        console.log(toPost);
 	        var request = new XMLHttpRequest();
-	        request.open("POST", this.props.url + '/companies');
+	        request.open("POST", this.props.url + 'companies');
 	        request.setRequestHeader("Content-Type", "application/json");
 	        request.withCredentials = true;
 	        request.onload = function () {
@@ -38636,7 +38636,7 @@
 	  handleSubmit: function handleSubmit(e) {
 	    e.preventDefault();
 	    var request = new XMLHttpRequest();
-	    request.open("POST", this.props.url + '/couriers');
+	    request.open("POST", this.props.url + 'couriers');
 	    request.setRequestHeader("Content-Type", "application/json");
 	    request.withCredentials = true;
 	    request.onload = function () {
