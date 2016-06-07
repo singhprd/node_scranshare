@@ -29,20 +29,16 @@ var CompanyForm = React.createClass({
           var request = new XMLHttpRequest();
           request.open("POST", this.props.url+'/companies');
           request.setRequestHeader("Content-Type", "application/json");
-          request.withCredentials = true;
-          console.log("RObit");
-          request.onreadystatechange = function(){
-            console.log("ready state chge")
-            
-          };
-          // request.onload = function(){
-          // console.log("onload post");
-          //   if(request.status === 200){
-          //     console.log(request.responseText);
-          //   }else {
-          //     console.log("error posting company data", request.status)
-          //   }
-          // }             
+          request.withCredentials = true;          
+          request.onload = function(){
+          console.log("onload post");
+            if(request.status === 200){
+              console.log(request.responseText);
+              window.location.reload();
+            }else {
+              console.log("error posting company data", request.status)
+            }
+          }             
           console.log("Batman");
           request.send(JSON.stringify(toPost));
         } else {
