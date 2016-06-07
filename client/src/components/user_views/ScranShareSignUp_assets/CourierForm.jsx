@@ -11,15 +11,12 @@ var CourierForm = React.createClass({
     this.setState({error: "Test error"});
   },
   handleSubmit: function(e){
-    alert("hello")
     e.preventDefault();
     var request = new XMLHttpRequest();
-    alert("request");
     request.open("POST", this.props.url+'/couriers');
     request.setRequestHeader("Content-Type", "application/json");
     request.withCredentials = true;
     request.onload = function(){
-    alert("request onload");
       if(request.status === 200){
         // console.log(request.responseText);
         this.setState({err: request.status});
