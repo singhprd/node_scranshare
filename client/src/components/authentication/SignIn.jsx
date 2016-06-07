@@ -41,7 +41,7 @@ var SignIn = React.createClass({
       <form onSubmit={this.signIn} className="pure-form pure-form-stacked">
         <input type="text" valueLink={this.linkState('email')} placeholder="Email" />
         <input type="password" valueLink={this.linkState('password')} placeholder="Password" />
-        <button className={btnClass} onClick={this.signIn}>  Sign In </button>
+        <button type="button" className={btnClass} onClick={this.signIn}>  Sign In </button>
       </form>
     );
   }

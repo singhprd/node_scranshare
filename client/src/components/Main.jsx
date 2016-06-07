@@ -59,7 +59,7 @@ var Main = React.createClass({
     request.open("GET", this.props.url + "users.json");
     request.setRequestHeader("Content-Type", "application/json");
     request.withCredentials = true;
-
+    console.log("gettins users")
     request.onload = function(){
       if(request.status === 200){
         var receivedUser = JSON.parse(request.responseText);
