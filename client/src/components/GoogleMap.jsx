@@ -2,14 +2,12 @@ var React = require('react');
 var JobList = require('./JobList');
 var InfoButton = require('./InfoButton');
 
-
-
 var GoogleMap = React.createClass({
   map: null,
-// infowindow: null,
 //initial state of JobList component is not visible:
 getInitialState: function(){
-  return {showJobList: false,
+  return {
+    showJobList: false,
     showInfoButton: false,
     jobMarker: [],
     markers: []
@@ -66,8 +64,6 @@ removeAllMarkers: function(map) {
 },
 setJobMarkerEmpty:function(){
   this.setState({showInfoButton: false});
-//too much?s
-// location.reload(true);
 },
 //add google info window:
 addInfoWindow: function( latLng, image){
@@ -98,8 +94,6 @@ addMarkersForJobs:function(){
   if (job.courier_id !== null){
     image = "images/orange-marker.png";
   }
-  // this.addMarker({lat: companyLat, lng: companyLng}, image);
-
   return this.addInfoWindow({lat: companyLat, lng: companyLng}, image);
 }.bind(this));
 },
@@ -118,9 +112,7 @@ componentDidMount:function(){
   this.addMarkersForJobs();
 },
 render:function(){
-
  this.addMarkersForJobs();
-
  return(
   <div className= "map">
   <div className = "pure-u-1-1" ref="map_canvas" id="map_canvas">

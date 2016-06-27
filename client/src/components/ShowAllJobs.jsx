@@ -30,7 +30,6 @@ var ShowAllJobs = React.createClass({
 
   render: function(){
     var jobs = this.props.jobs.map(function(job, index){
-
     return (<div key={index} jobIndex={index}>
         <li>
         {job.category} {job.item} {job.quantity} {job.instructions} {job.from_date} {job.to_date} 
@@ -42,7 +41,6 @@ var ShowAllJobs = React.createClass({
     )
   }.bind(this))
 
-
     return(
       <div>
         <ul>
@@ -51,8 +49,6 @@ var ShowAllJobs = React.createClass({
       </div>
     )
   }
-
 });
-// {this.updateButton(job, index)}
-// {this.deleteButton(job, index)}
+
 module.exports = ShowAllJobs;

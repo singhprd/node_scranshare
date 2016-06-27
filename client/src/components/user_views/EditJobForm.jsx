@@ -4,7 +4,6 @@ Date.prototype.isValid = function () {
   return this.getTime() === this.getTime();
 };  
 
-
 var React = require('react');
 var LinkedStateMixin = require('react-addons-linked-state-mixin');
 
@@ -31,16 +30,9 @@ var EditJobForm = React.createClass({
   handleSubmit: function(e){
     e.preventDefault()
     this.props.onUpdate(this.state)
-  //   this.setState(item:this.props.job.item,instructions:this.props.job.instructions,quantity:this.props.job.quantity, from_date: this.getTodaysDate(), to_date: this.getTodaysDate(), error:'', submited:false, category:this.props.job.category}
-  // })
-    // this.props.onUpdateJob(this)
-
   }, 
 
-
   render: function(){
-    // console.log("reached render in EditJobForm")
-    // console.log(this.props)
       var FormView = (
         <div>
         <form className="pure-form pure-form-aligned">
@@ -86,12 +78,8 @@ var EditJobForm = React.createClass({
         {this.state.error}
         </div>
         )
-
         return <div>{FormView}</div>
-
   }
-
 });
-
 
 module.exports = EditJobForm;

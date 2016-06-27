@@ -17,17 +17,12 @@ var CourierView = React.createClass({
     var jobs = this.props.jobs.map(function(each){
       if (each === job) {
         each.courier_id = this.props.currentUser.id;
-        // console.log(each)
         return each;
       } else {
        return each; 
       }
     }.bind(this));
     this.props.forceUpdateState({jobs: jobs})
-
-    // job.courier_id = this.props.currentUser.id;
-    // this.props.forceUpdateState({jobs: job});
-    // api post
     var updateUrl = this.props.url + "jobs/" + job.id;
     var object = {accepted: true};
     var request = new XMLHttpRequest();
@@ -35,13 +30,11 @@ var CourierView = React.createClass({
     request.setRequestHeader("Content-Type", "application/json");
     request.withCredentials = true;
     request.send(JSON.stringify(object));
-
-    // this.props.fetchJobs();
   },
+
   // release job
   handleCancelJob:function(job){
     // optimistic load
-    // console.log(this.props.jobs);
     var jobs = this.props.jobs.map(function(each){
       if (each.id === job.id) {
         each.courier_id = null;
@@ -51,9 +44,7 @@ var CourierView = React.createClass({
        return each; 
       }
     }.bind(this));
-    // console.log(jobs);
     this.props.forceUpdateState({jobs: jobs});
-
     // Api request
     var updateUrl = this.props.url + "jobs/" + job.id;
     var object = {accepted: false};
@@ -62,8 +53,6 @@ var CourierView = React.createClass({
     request.setRequestHeader("Content-Type", "application/json");
     request.withCredentials = true;
     request.send(JSON.stringify(object))
-
-    // this.props.fetchJobs();
   },
 
   handleCompleteJob:  function(job){
@@ -103,6 +92,4 @@ var CourierView = React.createClass({
   }
 })
 
-
 module.exports=CourierView;
-

@@ -21369,18 +21369,10 @@
 	var CompanyView = __webpack_require__(187);
 	var CourierView = __webpack_require__(195);
 	var Navbar = __webpack_require__(199);
-	//sample job to pass through to joblist if required:
-	// var sampleJSON = require('../sample.json');
-
 	//child components:
 	var JobList = __webpack_require__(191);
 	var GoogleMap = __webpack_require__(197);
 
-	//beginning attempts at newing up a google map:
-
-	// var Map = require('../map/googlemap');
-
-	//does the initial state have an empty array of jobs? i.e previous saved jobs could be store here
 	var Main = React.createClass({
 	  displayName: 'Main',
 
@@ -21438,9 +21430,7 @@
 	  },
 
 	  render: function render() {
-
 	    var mainDiv = null;
-
 	    if (!this.state.currentUser) {
 	      mainDiv = React.createElement(
 	        'div',
@@ -21497,7 +21487,6 @@
 	        );
 	      }
 	    }
-
 	    return React.createElement(
 	      'div',
 	      {
@@ -38706,20 +38695,6 @@
 
 	module.exports = CompanyForm;
 
-	// response.json().then(function(data){     
-	//   var toPost = {
-	//     name: this.state.companyName,
-	//     lat: data.result.latitude,
-	//     lng: data.result.longitude,
-	//     phone: this.state.phoneNumber,
-	//     email: this.state.email,
-	//     address1: this.state.address1,
-	//     address2: this.state.address2,
-	//     address3: this.state.address3,
-	//     postcode: this.state.postcode
-	//   }
-	// }.bind(this))
-
 /***/ },
 /* 186 */
 /***/ function(module, exports, __webpack_require__) {
@@ -38748,9 +38723,7 @@
 	    request.withCredentials = true;
 	    request.onload = function () {
 	      if (request.status === 200) {
-	        // console.log(request.responseText);
 	        this.setState({ err: request.status });
-	        // document.location.reload();
 	        window.location.reload();
 	      } else {
 	        this.setState({ err: request.status });
@@ -38868,7 +38841,6 @@
 	var JobList = __webpack_require__(191);
 	var EditJobForm = __webpack_require__(193);
 	var FormSuccessPage = __webpack_require__(194);
-	// var DatePicker = require('../DatePicker.jsx')
 	var CompanyView = React.createClass({
 	  displayName: 'CompanyView',
 
@@ -39333,7 +39305,6 @@
 
 	  render: function render() {
 	    var jobs = this.props.jobs.map(function (job, index) {
-
 	      return React.createElement(
 	        'div',
 	        { key: index, jobIndex: index, __self: this
@@ -39384,10 +39355,8 @@
 	      )
 	    );
 	  }
-
 	});
-	// {this.updateButton(job, index)}
-	// {this.deleteButton(job, index)}
+
 	module.exports = ShowAllJobs;
 
 /***/ },
@@ -39414,23 +39383,16 @@
 	  },
 
 	  takeJob: function takeJob(e) {
-	    // console.log(e.target.value)
-	    // e.preventDefault;
 	    var job = this.findJob(this.props.jobs, e.target.value);
 	    return this.props.onTakeJob(job);
-
-	    // this.setMarkerState(job);
-	    // return this.props.onTakeJob();
 	  },
 
 	  cancelJob: function cancelJob(e) {
-	    // console.log("cancel job");
 	    var job = this.findJob(this.props.jobs, e.target.value);
 	    return this.props.onCancelJob(job);
 	  },
 
 	  completeJob: function completeJob(e) {
-
 	    if (confirm("Just checking you completed this job and we can delete it from our database?") == true) {
 	      var job = this.findJob(this.props.jobs, e.target.value);
 	      this.props.onCompleteJob(job);
@@ -39462,9 +39424,6 @@
 	      },
 	      ' Complete Job '
 	    );
-
-	    // edit
-	    // delete
 
 	    if (job.courier_id === null) {
 	      return React.createElement(
@@ -39501,10 +39460,6 @@
 	      return null;
 	    }
 	  },
-
-	  // renderMultipleJobsForOneCompany: function(){
-
-	  // },
 
 	  render: function render() {
 	    var jobs = this.props.jobs.map(function (job, index) {
@@ -39575,65 +39530,57 @@
 	var React = __webpack_require__(7);
 
 	var Address = React.createClass({
-	  displayName: "Address",
+	    displayName: "Address",
 
-
-	  render: function render() {
-
-	    //old version:
-	    // var address = this.props.address.map(function(job, index){
-	    //   return (<div> <li key ={index}> {job.company.contactDetails.address1} </li><li> {job.company.contactDetails.address2} </li><li> {job.company.contactDetails.address3} </li><li> {job.company.contactDetails.postcode} </li><li> {job.company.contactDetails.phone} </li></div>) ;
-	    // });
-
-	    return React.createElement(
-	      "div",
-	      { className: "address-box", __self: this
-	      },
-	      React.createElement(
-	        "ul",
-	        {
-	          __self: this
-	        },
-	        React.createElement(
-	          "h4",
-	          { className: "address-header", __self: this
-	          },
-	          this.props.company.name
-	        ),
-	        React.createElement(
-	          "p",
-	          { className: "address-details", __self: this
-	          },
-	          this.props.company.contactDetails.address1,
-	          ", ",
-	          this.props.company.contactDetails.address2,
-	          ", ",
-	          this.props.company.contactDetails.address3,
-	          " "
-	        ),
-	        React.createElement(
-	          "p",
-	          { className: "address-details", __self: this
-	          },
-	          this.props.company.contactDetails.postcode
-	        ),
-	        React.createElement(
-	          "p",
-	          { className: "address-details", __self: this
-	          },
-	          "Phone: ",
-	          this.props.company.contactDetails.phone
-	        ),
-	        React.createElement(
-	          "a",
-	          { href: "mailto:" + this.props.company.contactDetails.email, __self: this
-	          },
-	          this.props.company.contactDetails.email
-	        )
-	      )
-	    );
-	  }
-
+	    render: function render() {
+	        return React.createElement(
+	            "div",
+	            { className: "address-box", __self: this
+	            },
+	            React.createElement(
+	                "ul",
+	                {
+	                    __self: this
+	                },
+	                React.createElement(
+	                    "h4",
+	                    { className: "address-header", __self: this
+	                    },
+	                    this.props.company.name
+	                ),
+	                React.createElement(
+	                    "p",
+	                    { className: "address-details", __self: this
+	                    },
+	                    this.props.company.contactDetails.address1,
+	                    ", ",
+	                    this.props.company.contactDetails.address2,
+	                    ", ",
+	                    this.props.company.contactDetails.address3,
+	                    " "
+	                ),
+	                React.createElement(
+	                    "p",
+	                    { className: "address-details", __self: this
+	                    },
+	                    this.props.company.contactDetails.postcode
+	                ),
+	                React.createElement(
+	                    "p",
+	                    { className: "address-details", __self: this
+	                    },
+	                    "Phone: ",
+	                    this.props.company.contactDetails.phone
+	                ),
+	                React.createElement(
+	                    "a",
+	                    { href: "mailto:" + this.props.company.contactDetails.email, __self: this
+	                    },
+	                    this.props.company.contactDetails.email
+	                )
+	            )
+	        );
+	    }
 	});
 
 	module.exports = Address;
@@ -39678,14 +39625,9 @@
 	  handleSubmit: function handleSubmit(e) {
 	    e.preventDefault();
 	    this.props.onUpdate(this.state);
-	    //   this.setState(item:this.props.job.item,instructions:this.props.job.instructions,quantity:this.props.job.quantity, from_date: this.getTodaysDate(), to_date: this.getTodaysDate(), error:'', submited:false, category:this.props.job.category}
-	    // })
-	    // this.props.onUpdateJob(this)
 	  },
 
 	  render: function render() {
-	    // console.log("reached render in EditJobForm")
-	    // console.log(this.props)
 	    var FormView = React.createElement(
 	      'div',
 	      {
@@ -39811,7 +39753,6 @@
 	      ),
 	      this.state.error
 	    );
-
 	    return React.createElement(
 	      'div',
 	      {
@@ -39820,7 +39761,6 @@
 	      FormView
 	    );
 	  }
-
 	});
 
 	module.exports = EditJobForm;
@@ -39895,17 +39835,12 @@
 	    var jobs = this.props.jobs.map(function (each) {
 	      if (each === job) {
 	        each.courier_id = this.props.currentUser.id;
-	        // console.log(each)
 	        return each;
 	      } else {
 	        return each;
 	      }
 	    }.bind(this));
 	    this.props.forceUpdateState({ jobs: jobs });
-
-	    // job.courier_id = this.props.currentUser.id;
-	    // this.props.forceUpdateState({jobs: job});
-	    // api post
 	    var updateUrl = this.props.url + "jobs/" + job.id;
 	    var object = { accepted: true };
 	    var request = new XMLHttpRequest();
@@ -39913,13 +39848,11 @@
 	    request.setRequestHeader("Content-Type", "application/json");
 	    request.withCredentials = true;
 	    request.send(JSON.stringify(object));
-
-	    // this.props.fetchJobs();
 	  },
+
 	  // release job
 	  handleCancelJob: function handleCancelJob(job) {
 	    // optimistic load
-	    // console.log(this.props.jobs);
 	    var jobs = this.props.jobs.map(function (each) {
 	      if (each.id === job.id) {
 	        each.courier_id = null;
@@ -39929,9 +39862,7 @@
 	        return each;
 	      }
 	    }.bind(this));
-	    // console.log(jobs);
 	    this.props.forceUpdateState({ jobs: jobs });
-
 	    // Api request
 	    var updateUrl = this.props.url + "jobs/" + job.id;
 	    var object = { accepted: false };
@@ -39940,8 +39871,6 @@
 	    request.setRequestHeader("Content-Type", "application/json");
 	    request.withCredentials = true;
 	    request.send(JSON.stringify(object));
-
-	    // this.props.fetchJobs();
 	  },
 
 	  handleCompleteJob: function handleCompleteJob(job) {
@@ -40109,10 +40038,10 @@
 	  displayName: 'GoogleMap',
 
 	  map: null,
-	  // infowindow: null,
 	  //initial state of JobList component is not visible:
 	  getInitialState: function getInitialState() {
-	    return { showJobList: false,
+	    return {
+	      showJobList: false,
 	      showInfoButton: false,
 	      jobMarker: [],
 	      markers: []
@@ -40169,8 +40098,6 @@
 	  },
 	  setJobMarkerEmpty: function setJobMarkerEmpty() {
 	    this.setState({ showInfoButton: false });
-	    //too much?s
-	    // location.reload(true);
 	  },
 	  //add google info window:
 	  addInfoWindow: function addInfoWindow(latLng, image) {
@@ -40201,8 +40128,6 @@
 	      if (job.courier_id !== null) {
 	        image = "images/orange-marker.png";
 	      }
-	      // this.addMarker({lat: companyLat, lng: companyLng}, image);
-
 	      return this.addInfoWindow({ lat: companyLat, lng: companyLng }, image);
 	    }.bind(this));
 	  },
@@ -40220,9 +40145,7 @@
 	    this.addMarkersForJobs();
 	  },
 	  render: function render() {
-
 	    this.addMarkersForJobs();
-
 	    return React.createElement(
 	      'div',
 	      { className: 'map', __self: this
@@ -40302,7 +40225,6 @@
 	    } else {
 	      for (var i = 1; i < jobs.length; i++) {
 	        if (company.name == jobs[i].company.name) {
-	          // console.log(company)
 	          return company;
 	        } else {
 	          return false;
@@ -40315,31 +40237,17 @@
 	    var filteredJobs = [];
 	    this.props.jobs.forEach(function (job) {
 	      if (job.company.position.lat == this.props.jobIndices.lat) {
-	        // console.log("reached here")
 	        filteredJobs.push(job);
 	      }
-	      // return jobIndices;
 	    }.bind(this));
-
-	    // var jobs = [];
-	    // for (var index of this.props.jobIndices) {
-	    //   jobs.push(this.props.jobs[index]);
-	    // }
 	    return filteredJobs;
 	  },
 
-	  // {this.displayJobDetails(this.props.job)}
-
 	  render: function render() {
-	    // var clickInfoWindow = function(){
-	    //     console.log(4+2);
-	    // };
-
 	    var selectedJobs = this.selectJobs();
 	    if (selectedJobs.length === 0) {
 	      return null;
 	    }
-
 	    return React.createElement(
 	      'div',
 	      { id: 'my-info-window', __self: this
@@ -40356,7 +40264,6 @@
 	      })
 	    );
 	  }
-
 	});
 
 	module.exports = InfoButton;

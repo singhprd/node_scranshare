@@ -100,19 +100,3 @@ var CompanyForm = React.createClass({
   });
 
 module.exports = CompanyForm;
-
-
-
-      // response.json().then(function(data){      
-      //   var toPost = {
-      //     name: this.state.companyName,
-      //     lat: data.result.latitude,
-      //     lng: data.result.longitude,
-      //     phone: this.state.phoneNumber,
-      //     email: this.state.email,
-      //     address1: this.state.address1,
-      //     address2: this.state.address2,
-      //     address3: this.state.address3,
-      //     postcode: this.state.postcode
-      //   }
-      // }.bind(this))

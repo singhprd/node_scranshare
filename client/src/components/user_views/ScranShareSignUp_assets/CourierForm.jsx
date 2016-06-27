@@ -18,9 +18,7 @@ var CourierForm = React.createClass({
     request.withCredentials = true;
     request.onload = function(){
       if(request.status === 200){
-        // console.log(request.responseText);
         this.setState({err: request.status});
-        // document.location.reload();
         window.location.reload();
       }else {
         this.setState({err: request.status})

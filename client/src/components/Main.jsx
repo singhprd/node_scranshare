@@ -9,18 +9,10 @@ var ScranShareSignUp = require('./user_views/ScranShareSignUp.jsx')
 var CompanyView = require('./user_views/CompanyView.jsx')
 var CourierView = require('./user_views/CourierView.jsx')
 var Navbar = require('./Navbar')
-//sample job to pass through to joblist if required:
-// var sampleJSON = require('../sample.json');
-
 //child components:
 var JobList = require('./JobList');
 var GoogleMap = require('./GoogleMap');
 
-//beginning attempts at newing up a google map:
-
-// var Map = require('../map/googlemap');
-
-//does the initial state have an empty array of jobs? i.e previous saved jobs could be store here 
 var Main = React.createClass({
   getInitialState: function(){
     return{currentUser:null, jobs:[]};
@@ -74,46 +66,43 @@ var Main = React.createClass({
   componentDidMount: function(){
     this.fetchUser();
   },
-
-    render: function() {
-
-      var mainDiv = null;
-
-      if(!this.state.currentUser) {
-        mainDiv = (
-          <div>
-            <Navbar/>
-            <h4> Please Sign In/Up </h4>
-            <SignIn url={this.props.url + "users/sign_in.json"} onSignIn={this.setUser}></SignIn>
-            <SignUp url={this.props.url + "users.json"} onSignUp={this.setUser}></SignUp>
-          </div>
-        )
-      } else {
-        if(this.state.currentUser.company_id !== null) {
-          // USER HAS COMPANY
-          mainDiv = <div>
-           <CompanyView forceUpdateState={this.forceUpdateState} url={this.props.url} onSignOut={this.setUser} company={this.state.currentUser} jobs={this.state.jobs} fetchJobs = {this.fetchJobs}/>
-            </div>
-        } else if (this.state.currentUser.courier_id !== null) {
-          // USER IS A COURIER
-          mainDiv = <div>
-           <CourierView forceUpdateState={this.forceUpdateState} currentUser={this.state.currentUser} url={this.props.url} user={this.state.currentUser} jobs={this.state.jobs} fetchJobs = {this.fetchJobs} onSignOut={this.setUser}/>
-            </div>
-        } else {
-          // USER IS NOT COURIER OR COMPANY
-          mainDiv = <div>
-           <ScranShareSignUp url={this.props.url}/>
-            <SignOut url={this.props.url + "users/sign_out.json"} onSignOut={this.setUser}></SignOut>
-            </div>
-        }
-      }
-
-      return (
+  
+  render: function() {
+    var mainDiv = null;
+    if(!this.state.currentUser) {
+      mainDiv = (
         <div>
-          { mainDiv }
+          <Navbar/>
+          <h4> Please Sign In/Up </h4>
+          <SignIn url={this.props.url + "users/sign_in.json"} onSignIn={this.setUser}></SignIn>
+          <SignUp url={this.props.url + "users.json"} onSignUp={this.setUser}></SignUp>
         </div>
-      );
+      )
+    } else {
+      if(this.state.currentUser.company_id !== null) {
+        // USER HAS COMPANY
+        mainDiv = <div>
+         <CompanyView forceUpdateState={this.forceUpdateState} url={this.props.url} onSignOut={this.setUser} company={this.state.currentUser} jobs={this.state.jobs} fetchJobs = {this.fetchJobs}/>
+          </div>
+      } else if (this.state.currentUser.courier_id !== null) {
+        // USER IS A COURIER
+        mainDiv = <div>
+         <CourierView forceUpdateState={this.forceUpdateState} currentUser={this.state.currentUser} url={this.props.url} user={this.state.currentUser} jobs={this.state.jobs} fetchJobs = {this.fetchJobs} onSignOut={this.setUser}/>
+          </div>
+      } else {
+        // USER IS NOT COURIER OR COMPANY
+        mainDiv = <div>
+         <ScranShareSignUp url={this.props.url}/>
+          <SignOut url={this.props.url + "users/sign_out.json"} onSignOut={this.setUser}></SignOut>
+          </div>
+      }
     }
-  });
+    return (
+      <div>
+        { mainDiv }
+      </div>
+    );
+  }
+});
 
 module.exports = Main;

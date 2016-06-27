@@ -7,7 +7,6 @@ var ShowAllJobs = require('../ShowAllJobs.jsx');
 var JobList = require('../JobList.jsx');
 var EditJobForm = require('./EditJobForm.jsx');
 var FormSuccessPage = require('../FormSuccessPage.jsx');
-// var DatePicker = require('../DatePicker.jsx')
 var CompanyView = React.createClass({
   getInitialState: function() {
     return {currentView: "foodForm", selectedJobForEdit: {}};
