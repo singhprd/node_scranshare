@@ -68,7 +68,7 @@
 /* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var require;var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(process, global, module) {/*!
+	var __WEBPACK_AMD_DEFINE_RESULT__;var require;/* WEBPACK VAR INJECTION */(function(process, global, module) {/*!
 	 * @overview es6-promise - a tiny implementation of Promises/A+.
 	 * @copyright Copyright (c) 2014 Yehuda Katz, Tom Dale, Stefan Penner and contributors (Conversion to ES6 API by Jake Archibald)
 	 * @license   Licensed under MIT license
@@ -21413,7 +21413,7 @@
 	    request.open("GET", this.props.url + "users.json");
 	    request.setRequestHeader("Content-Type", "application/json");
 	    request.withCredentials = true;
-	    console.log("gettins users");
+	    console.log("authenticating users");
 	    request.onload = function () {
 	      if (request.status === 200) {
 	        var receivedUser = JSON.parse(request.responseText);
@@ -37926,21 +37926,22 @@
 	  mixins: [LinkedStateMixin],
 
 	  getInitialState: function getInitialState() {
-	    return { email: "", password: "", error: false };
+	    return { email: "", password: "", error: false, messageGiven: false };
 	  },
 	  signIn: function signIn(e) {
 	    e.preventDefault();
-	    this.setState({ error: false });
 	    var request = new XMLHttpRequest();
 	    request.open("POST", this.props.url);
 	    request.setRequestHeader("Content-Type", "application/json");
 	    request.withCredentials = true;
+	    this.setState({ error: false });
 	    request.onload = function () {
 	      if (request.status === 201) {
 	        var user = JSON.parse(request.responseText);
 	        this.props.onSignIn(user);
 	      } else if (request.status === 401) {
 	        this.setState({ error: true });
+	        this.setState({ messageGiven: true });
 	      }
 	    }.bind(this);
 	    var data = {
@@ -37957,19 +37958,37 @@
 	      'pure-button-primary': true,
 	      "buttonError": this.state.error
 	    });
+	    var errorMessage;
+	    var buttonText = "Sign In";
+	    if (this.state.messageGiven == true) {
+	      errorMessage = "wrong email or password";
+	      buttonText = "try again?";
+	    }
 	    return React.createElement(
-	      'form',
-	      { onSubmit: this.signIn, className: 'pure-form pure-form-stacked', __self: this
+	      'div',
+	      {
+	        __self: this
 	      },
-	      React.createElement('input', { type: 'text', valueLink: this.linkState('email'), placeholder: 'Email', __self: this
-	      }),
-	      React.createElement('input', { type: 'password', valueLink: this.linkState('password'), placeholder: 'Password', __self: this
-	      }),
 	      React.createElement(
-	        'button',
-	        { type: 'button', className: btnClass, onClick: this.signIn, __self: this
+	        'form',
+	        { onSubmit: this.signIn, className: 'pure-form pure-form-stacked', __self: this
 	        },
-	        '  Sign In '
+	        React.createElement('input', { type: 'text', valueLink: this.linkState('email'), placeholder: 'Email', __self: this
+	        }),
+	        React.createElement('input', { type: 'password', valueLink: this.linkState('password'), placeholder: 'Password', __self: this
+	        }),
+	        React.createElement(
+	          'button',
+	          { type: 'button', className: btnClass, onClick: this.signIn, __self: this
+	          },
+	          buttonText
+	        )
+	      ),
+	      React.createElement(
+	        'p',
+	        { id: 'login-error-message', __self: this
+	        },
+	        errorMessage
 	      )
 	    );
 	  }

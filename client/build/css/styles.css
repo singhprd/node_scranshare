@@ -232,3 +232,18 @@
     padding: 3px;
     color: white;
   }
+
+  .buttonError {
+    -webkit-animation: myanim 1s 1; /* Chrome, Opera 15+, Safari 5+ */
+    animation: myanim 1s 1; /* Chrome, Firefox 16+, IE 10+, Opera */
+    }    
+
+    @keyframes myanim {
+      0% { background-color: orange}
+      /*0%   { background-color: rgb(0, 120, 231)}*/
+      50%  { background-color: orange}
+      100% { background-color: rgb(0, 120, 231)}
+    }
+#login-error-message {
+  color: red;
+}
