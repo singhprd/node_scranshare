@@ -13,6 +13,7 @@ var CourierForm = React.createClass({
   handleSubmit: function(e){
     e.preventDefault();
     var request = new XMLHttpRequest();
+    console.log("POST", this.props.url+'couriers')
     request.open("POST", this.props.url+'couriers');
     request.setRequestHeader("Content-Type", "application/json");
     request.withCredentials = true;
